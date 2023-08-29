@@ -13,12 +13,12 @@ Repository for hosting end-to-end and integration tests for the LetsMesh website
 - Run `npm install` to install all required packages from `package.json`
 
 ## Repository Structure
-- The Integration Tests repository contains:
+- The Integration Tests repository contains (note that some files/folders are in the .gitignore so not all will appear on the remote repository):
   - `.github/workflows` folder containing a `playwright.yml` file that will run your tests on commit/opening a PR.
   - `node_modules` folder containing installed npm packages.
   - `playwright-report` will only appear after running tests, and will contain Playwright reporters that detail the last finished tests and print failures when they occur.
   - `test-results` will contain test artifacts such as screenshots, videos, traces, or other relevant information gathered in specific tests that capture that information.
-  - `test-examples` folder containing an example `.spec.ts` file that test a demo app.
+  - `tests-examples` folder containing an example `.spec.ts` file that test a demo app.
   - `tests` folder contains all test files, such as `example.spec.ts`
   - `.gitignore` to tell git to not track certain files and folders that we don't want uploaded to the master repository.
   - `package.json` and `package-lock.json` are versioning files that are used to install packages and track package versions for the repository.
