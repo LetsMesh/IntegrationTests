@@ -5,6 +5,7 @@ Repository for hosting end-to-end and integration tests for the LetsMesh website
 - Ensure that npm is installed
 - Ensure that you have cloned the Site repository in a separate folder with `git clone https://github.com/LetsMesh/Site.git` and are able to run it with `pipenv shell` and `python manage.py runserver`
 - Although not strictly necessary, you may want to install the "Playwright Test for VSCode" extension
+- More info for Playwright can be foun in then [Playwright documentation](https://playwright.dev/docs/intro).
 
 ## Repository Setup
 - Clone this repository using `git clone https://github.com/LetsMesh/IntegrationTests.git`
@@ -26,6 +27,9 @@ Repository for hosting end-to-end and integration tests for the LetsMesh website
 ## Running Tests
 - You can run the following commands/follow these patterns to run tests
   - `npx playwright test` to run all tests.
+  - `npx playwright test example.spec.ts` to run all tests in a specific file, such as running all tests in `example.spec.ts` file.
+  - `npx playwright test tests/example/` to run all tests in a specific folder, such as running all tests in the `examples` folder.
+  - ... and many other ways you can find on the [Playwright documentation for running tests](https://playwright.dev/docs/running-tests).
 
 ## Writing Tests
 - TODO
