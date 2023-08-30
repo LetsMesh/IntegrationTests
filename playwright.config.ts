@@ -4,7 +4,9 @@ import { defineConfig, devices } from "@playwright/test";
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config();
+require("dotenv").config();
+
+const sitePath = process.env.SITE_PATH;
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -68,10 +70,11 @@ export default defineConfig({
     // },
   ],
 
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: "npm run start",
-  //   url: "http://127.0.0.1:3000",
-  //   reuseExistingServer: !process.env.CI,
-  // },
+  /* Run your local dev server before starting the tests, wait 20 seconds until timeout */
+  webServer: {
+    command: `cd ${sitePath} && pipenv run python manage.py runserver`,
+    url: "http://127.0.0.1:8000",
+    reuseExistingServer: !process.env.CI,
+    timeout: 20 * 1000,
+  },
 });
