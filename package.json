@@ -1,0 +1,16 @@
+{
+  "name": "integrationtests",
+  "version": "1.0.0",
+  "description": "Repository for hosting integration tests to test the Lets Mesh website.",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.37.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}
