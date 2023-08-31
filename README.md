@@ -22,7 +22,6 @@ Repository for hosting end-to-end and integration tests for the LetsMesh website
   - `node_modules` folder containing installed npm packages.
   - `playwright-report` will only appear after running tests, and will contain Playwright reporters that detail the last finished tests and print failures when they occur.
   - `test-results` will contain test artifacts such as screenshots, videos, traces, or other relevant information gathered in specific tests that capture that information.
-  - `tests-examples` folder containing an example `.spec.ts` file that test a demo app.
   - `tests` folder contains all test files, such as `example.spec.ts`
   - `.gitignore` to tell git to not track certain files and folders that we don't want uploaded to the master repository.
   - `package.json` and `package-lock.json` are versioning files that are used to install packages and track package versions for the repository.
@@ -44,6 +43,6 @@ Repository for hosting end-to-end and integration tests for the LetsMesh website
 ## Writing Tests
 
 - When writing tests, the [Playwright documentation for writing tests](https://playwright.dev/docs/writing-tests) as well as the [Playwright documentation for best practices](https://playwright.dev/docs/best-practices) will come in very handy.
-- Before writing your tests, you should look for which Epic your test is relevant to, which will then lead you to which folder will contain the proper test file.
+- Before writing your tests, you should look for which Epic your test is relevant to, which will then lead you to which folder will contain the proper test file. All tests are contained in the `tests` folder.
   - You can find which Epic your test is related to by looking at the [issue](https://github.com/LetsMesh/IntegrationTests/issues) assigned to you, and looking at the labels attached to it.
 - Once you have located the folder that your test contains, you should most likely just use the existing .spec.ts file within it, and add a new `test("test-title", async ({page}) => {...})` function, and add the behavior you would like to test.
