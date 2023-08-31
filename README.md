@@ -43,4 +43,7 @@ Repository for hosting end-to-end and integration tests for the LetsMesh website
 
 ## Writing Tests
 
-- TODO
+- When writing tests, the [Playwright documentation for writing tests](https://playwright.dev/docs/writing-tests) as well as the [Playwright documentation for best practices](https://playwright.dev/docs/best-practices) will come in very handy.
+- Before writing your tests, you should look for which Epic your test is relevant to, which will then lead you to which folder will contain the proper test file.
+  - You can find which Epic your test is related to by looking at the [issue](https://github.com/LetsMesh/IntegrationTests/issues) assigned to you, and looking at the labels attached to it.
+- Once you have located the folder that your test contains, you should most likely just use the existing .spec.ts file within it, and add a new `test("test-title", async ({page}) => {...})` function, and add the behavior you would like to test.
