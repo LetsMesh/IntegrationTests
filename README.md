@@ -5,14 +5,14 @@ Repository for hosting end-to-end and integration tests for the LetsMesh website
 ## Prerequisites
 
 - Ensure that npm is installed
-- Ensure that you have cloned the Site repository in a separate folder with `git clone https://github.com/LetsMesh/Site.git` and are able to run it with `pipenv shell` and `python manage.py runserver`
+- Ensure that you have cloned the Site repository in a separate folder with `git clone https://github.com/LetsMesh/Site.git` and are able to run it with `pipenv shell` and `python manage.py runserver`, this is to ensure that Playwright can also run the website when running tests
 - Although not strictly necessary, you may want to install the "Playwright Test for VSCode" extension
 - More info for Playwright can be foun in then [Playwright documentation](https://playwright.dev/docs/intro).
 
 ## Repository Setup
 
 - Clone this repository using `git clone https://github.com/LetsMesh/IntegrationTests.git`
-- Place a copy of your `.env` file from the Site repository into this project, and follow the provided `template.env`, making sure to add the path to your local Site repository in the `SITE_PATH` variable.
+- Place a copy of your `.env` file from the Site repository into this project, and follow the provided `template.env`, making sure to add the path to your local Site repository in the `SITE_PATH` variable
 - Run `npm install` to install all required packages from `package.json`
 
 ## Repository Structure
@@ -23,7 +23,7 @@ Repository for hosting end-to-end and integration tests for the LetsMesh website
   - `playwright-report` will only appear after running tests, and will contain Playwright reporters that detail the last finished tests and print failures when they occur.
   - `test-results` will contain test artifacts such as screenshots, videos, traces, or other relevant information gathered in specific tests that capture that information.
   - `tests` folder contains all test files, such as `example.spec.ts`
-  - `.gitignore` to tell git to not track certain files and folders that we don't want uploaded to the master repository.
+  - `.gitignore` to tell git to not track certain files and folders that we don't want uploaded to the master repository, such as `node_modules` or the `test-results` folder.
   - `package.json` and `package-lock.json` are versioning files that are used to install packages and track package versions for the repository.
   - `playwright.config.ts` contains configuration details for the Playwright test suite.
   - `README.md` is the file you are currently reading.
