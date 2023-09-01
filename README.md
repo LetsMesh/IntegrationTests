@@ -14,6 +14,7 @@ Repository for hosting end-to-end and integration tests for the LetsMesh website
 - Clone this repository using `git clone https://github.com/LetsMesh/IntegrationTests.git`
 - Place a copy of your `.env` file from the Site repository into this project, and follow the provided `template.env`, making sure to add the path to your local Site repository in the `SITE_PATH` variable
 - Run `npm install` to install all required packages from `package.json`
+- Run `npx playwright install` to install Playwright's required testing browsers
 
 ## Repository Structure
 
