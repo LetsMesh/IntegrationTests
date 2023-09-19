@@ -1,8 +1,16 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, Locator } from "@playwright/test";
 
-test("user profiles", async ({ page }) => {
-  await page.goto("/");
+test.describe("user profile tests", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto("/profile");
 
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle("Mesh");
+    const twoFactorAuthenticationNoThanksButton = page.getByText("No thanks");
+    await twoFactorAuthenticationNoThanksButton.click();
+  });
+
+  test("user profile title", async ({ page }) => {
+    const userProfileName = page.getByRole("heading", { name: "Bob Yomom" });
+
+    await expect(userProfileName).toBeVisible();
+  });
 });
