@@ -9,52 +9,128 @@ test.describe("view personal profile tests", () => {
         await twoFactorAuthenticationNoThanksButton.click();
     });
 
-    test("test that headings and profile pictures are visible", async ({
-        page,
-    }) => {
+    test("headings and profile pictures are visible", async ({ page }) => {
+        // Profile name + pronouns are visible
         const profileName = page.getByRole("heading").first();
 
-        await expect.soft(profileName).toBeVisible();
+        await expect(profileName).toBeVisible();
 
-        // 0-indexed, grabs 2nd heading
+        // nth is 0-indexed, grabs 2nd heading
         const profilePronouns = page.getByRole("heading").nth(1);
 
-        await expect.soft(profilePronouns).toBeVisible();
+        await expect(profilePronouns).toBeVisible();
 
+        // Title heading is visible
         const titleHeading = page
             .locator("label")
             .filter({ hasText: "Biography" });
 
-        await expect.soft(titleHeading).toBeVisible();
+        await expect(titleHeading).toBeVisible();
 
+        // Biography is visible
         const biographyHeading = page.getByText("Biography").first();
 
-        await expect.soft(biographyHeading).toBeVisible();
+        await expect(biographyHeading).toBeVisible();
 
+        // Experience is visible
         const experienceHeading = page.getByRole("heading", {
             name: "Experience",
         });
 
-        await expect.soft(experienceHeading).toBeVisible();
+        await expect(experienceHeading).toBeVisible();
 
+        // Education is visible
         const educationHeading = page.getByRole("heading", {
             name: "Education",
         });
 
-        await expect.soft(educationHeading).toBeVisible();
+        await expect(educationHeading).toBeVisible();
 
+        // Profile picture is visible
         const profilePicture = page.getByRole("img", { name: "profile" });
 
-        await expect.soft(profilePicture).toBeVisible();
+        await expect(profilePicture).toBeVisible();
 
+        // Mentor or mentee is visible
         const mentorOrMenteeHeading = page.getByText("Mentor | Mentee");
 
-        await expect.soft(mentorOrMenteeHeading).toBeVisible();
+        await expect(mentorOrMenteeHeading).toBeVisible();
 
+        // Interests are visible
         const interestsHeading = page.getByRole("heading", {
             name: "Interests",
         });
 
-        await expect.soft(interestsHeading).toBeVisible();
+        await expect(interestsHeading).toBeVisible();
+    });
+
+    test("text areas and profile pictures can be changed and saved", async ({
+        page,
+    }) => {
+        // need to make it so we actually test uploading maybe...
+        // Profile picture is editable
+        const profilePictureContainer = page.locator(
+            ".profile-page-picture-parent-container"
+        );
+
+        await profilePictureContainer.getByTestId("EditIcon").dblclick();
+
+        // Biography is editable
+        const biographyContainer = page.locator(".profile-page-biography");
+
+        await biographyContainer.getByTestId("EditIcon").click();
+
+        const biographyTextArea = biographyContainer.getByRole("textbox");
+
+        await biographyTextArea.fill("filler biography");
+
+        await biographyContainer.getByTestId("SaveIcon").click();
+
+        await expect(biographyTextArea).toContainText("filler biography");
+
+        // Experience is editable
+        const experienceContainer = page
+            .locator(".profile-page-column-body")
+            .filter({ hasText: /Experience/ });
+
+        await experienceContainer.getByTestId("EditIcon").click();
+
+        const experienceTextArea = experienceContainer.getByRole("textbox");
+
+        await experienceTextArea.fill("filler experience");
+
+        await experienceContainer.getByTestId("SaveIcon").click();
+
+        await expect(experienceTextArea).toContainText("filler experience");
+
+        // Education is editable
+        const educationContainer = page
+            .locator(".profile-page-column-body")
+            .filter({ hasText: /Education/ });
+
+        await educationContainer.getByTestId("EditIcon").click();
+
+        const educationTextArea = educationContainer.getByRole("textbox");
+
+        await educationTextArea.fill("filler education");
+
+        await educationContainer.getByTestId("SaveIcon").click();
+
+        await expect(educationTextArea).toContainText("filler education");
+
+        // Interests are editable
+        const interestsContainer = page
+            .locator(".profile-page-column-body")
+            .filter({ hasText: /Interests/ });
+
+        await interestsContainer.getByTestId("EditIcon").click();
+
+        const interestsTextArea = interestsContainer.getByRole("textbox");
+
+        await interestsTextArea.fill("filler interests");
+
+        await interestsContainer.getByTestId("SaveIcon").click();
+
+        await expect(interestsTextArea).toContainText("filler interests");
     });
 });
