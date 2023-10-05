@@ -21,7 +21,9 @@ test.describe("view personal profile tests", () => {
 
         await expect.soft(profilePronouns).toBeVisible();
 
-        const titleHeading = page.getByRole("heading").nth(2);
+        const titleHeading = page
+            .locator("label")
+            .filter({ hasText: "Biography" });
 
         await expect.soft(titleHeading).toBeVisible();
 
@@ -41,7 +43,7 @@ test.describe("view personal profile tests", () => {
 
         await expect.soft(educationHeading).toBeVisible();
 
-        const profilePicture = page.getByRole("img").nth(1);
+        const profilePicture = page.getByRole("img", { name: "profile" });
 
         await expect.soft(profilePicture).toBeVisible();
 
