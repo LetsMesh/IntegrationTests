@@ -130,6 +130,24 @@ test.describe("view personal profile tests", () => {
             ".profile-page-picture-parent-container"
         );
 
-        await profilePictureContainer.getByTestId("EditIcon").dblclick();
+        const profilePictureEditButton =
+            profilePictureContainer.getByTestId("EditIcon");
+
+        await profilePictureEditButton.click();
+
+        await profilePictureContainer.getByText("Delete").click();
+
+        await page.getByRole("button", { name: "Yes, remove it!" }).click();
+
+        await profilePictureContainer.getByTestId("EditIcon").click();
+
+        await page.getByText("Edit").click();
+
+        await profilePictureContainer
+            .locator(".profile-page-picture-edit-container")
+            .locator("#fileInput")
+            .setInputFiles("test-media/bofuri.jpg");
+
+        await profilePictureEditButton.click();
     });
 });
