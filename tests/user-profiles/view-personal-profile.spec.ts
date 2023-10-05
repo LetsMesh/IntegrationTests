@@ -64,17 +64,7 @@ test.describe("view personal profile tests", () => {
         await expect(interestsHeading).toBeVisible();
     });
 
-    test("text areas and profile pictures can be changed and saved", async ({
-        page,
-    }) => {
-        // need to make it so we actually test uploading maybe...
-        // Profile picture is editable
-        const profilePictureContainer = page.locator(
-            ".profile-page-picture-parent-container"
-        );
-
-        await profilePictureContainer.getByTestId("EditIcon").dblclick();
-
+    test("text areas can be changed and saved", async ({ page }) => {
         // Biography is editable
         const biographyContainer = page.locator(".profile-page-biography");
 
@@ -132,5 +122,14 @@ test.describe("view personal profile tests", () => {
         await interestsContainer.getByTestId("SaveIcon").click();
 
         await expect(interestsTextArea).toContainText("filler interests");
+    });
+
+    test("profile picture can be changed and saved", async ({ page }) => {
+        // Profile picture is editable
+        const profilePictureContainer = page.locator(
+            ".profile-page-picture-parent-container"
+        );
+
+        await profilePictureContainer.getByTestId("EditIcon").dblclick();
     });
 });
