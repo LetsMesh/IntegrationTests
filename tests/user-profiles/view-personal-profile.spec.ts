@@ -9,54 +9,62 @@ test.describe("view personal profile tests", () => {
         await twoFactorAuthenticationNoThanksButton.click();
     });
 
-    test("headings and profile pictures are visible", async ({ page }) => {
-        // Profile name + pronouns are visible
+    test("name heading is visble", async ({ page }) => {
         const profileName = page.getByRole("heading").first();
 
         await expect(profileName).toBeVisible();
+    });
 
-        // nth is 0-indexed, grabs 2nd heading
+    test("pronouns are visible", async ({ page }) => {
+        // nth is 0-indexed, grabs 2nd heading (which should be pronouns heading)
         const profilePronouns = page.getByRole("heading").nth(1);
 
         await expect(profilePronouns).toBeVisible();
+    });
 
-        // Title heading is visible
+    test("title heading is visible", async ({ page }) => {
         const titleHeading = page
             .locator("label")
             .filter({ hasText: "Biography" });
 
         await expect(titleHeading).toBeVisible();
+    });
 
-        // Biography is visible
+    test("biography heading is visible", async ({ page }) => {
         const biographyHeading = page.getByText("Biography").first();
 
         await expect(biographyHeading).toBeVisible();
+    });
 
-        // Experience is visible
+    test("experience heading is visible", async ({ page }) => {
         const experienceHeading = page.getByRole("heading", {
             name: "Experience",
         });
 
         await expect(experienceHeading).toBeVisible();
+    });
 
-        // Education is visible
+    test("education heading is visible", async ({ page }) => {
         const educationHeading = page.getByRole("heading", {
             name: "Education",
         });
 
         await expect(educationHeading).toBeVisible();
+    });
 
-        // Profile picture is visible
+    test("profile picture is visible", async ({ page }) => {
         const profilePicture = page.getByRole("img", { name: "profile" });
 
         await expect(profilePicture).toBeVisible();
+    });
 
-        // Mentor or mentee is visible
+    test("mentor or mentee is visible", async ({ page }) => {
         const mentorOrMenteeHeading = page.getByText("Mentor | Mentee");
 
         await expect(mentorOrMenteeHeading).toBeVisible();
+    });
 
-        // Interests are visible
+    test("interests are visible", async ({ page }) => {
         const interestsHeading = page.getByRole("heading", {
             name: "Interests",
         });
