@@ -23,9 +23,8 @@ test.describe("view personal profile tests", () => {
     });
 
     test("title heading is visible", async ({ page }) => {
-        const titleHeading = page
-            .locator("label")
-            .filter({ hasText: "Biography" });
+        // nth is 0-indexed, grabs 3rd heading (which should be title heading)
+        const titleHeading = page.getByRole("heading").nth(2);
 
         await expect(titleHeading).toBeVisible();
     });
