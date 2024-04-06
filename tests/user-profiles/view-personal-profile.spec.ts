@@ -1,4 +1,4 @@
-import { test, expect, Locator } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 
 test.describe("view personal profile tests", () => {
     test.beforeEach(async ({ page }) => {
