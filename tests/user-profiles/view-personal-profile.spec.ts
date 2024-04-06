@@ -36,37 +36,43 @@ test.describe("view personal profile tests", () => {
     });
 
     test("experience heading is visible", async ({ page }) => {
-        const experienceHeading = page.getByRole("heading", {
-            name: "Experience",
-        });
+        const experienceHeading = page
+            .getByRole("heading", {
+                name: "Experience",
+            })
+            .first();
 
         await expect(experienceHeading).toBeVisible();
     });
 
     test("education heading is visible", async ({ page }) => {
-        const educationHeading = page.getByRole("heading", {
-            name: "Education",
-        });
+        const educationHeading = page
+            .getByRole("heading", {
+                name: "Education",
+            })
+            .first();
 
         await expect(educationHeading).toBeVisible();
     });
 
     test("profile picture is visible", async ({ page }) => {
-        const profilePicture = page.getByRole("img", { name: "profile" });
+        const profilePicture = page
+            .getByRole("img", { name: "profile" })
+            .first();
 
         await expect(profilePicture).toBeVisible();
     });
 
     test("mentor or mentee is visible", async ({ page }) => {
-        const mentorOrMenteeHeading = page.getByText("Mentor | Mentee");
+        const mentorOrMenteeHeading = page.getByText("Mentor | Mentee").first();
 
         await expect(mentorOrMenteeHeading).toBeVisible();
     });
 
     test("interests are visible", async ({ page }) => {
-        const interestsHeading = page.getByRole("heading", {
-            name: "Interests",
-        });
+        const interestsHeading = page
+            .getByRole("heading", { name: "Interests" })
+            .first();
 
         await expect(interestsHeading).toBeVisible();
     });
