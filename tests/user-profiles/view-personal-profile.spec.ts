@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("view personal profile tests", () => {
+    // close out 2FA windows
     test.beforeEach(async ({ page }) => {
         await page.goto("/profile");
 
