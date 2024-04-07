@@ -65,9 +65,11 @@ test.describe("view personal profile tests", () => {
     });
 
     test("mentor or mentee is visible", async ({ page }) => {
-        const mentorOrMenteeHeading = page.getByText("Mentor | Mentee").first();
+        const mentorHeading = page.getByText("Mentor");
+        const menteeHeading = page.getByText("Mentee");
 
-        await expect(mentorOrMenteeHeading).toBeVisible();
+        // Text can either be mentor or mentee
+        await expect(mentorHeading.or(menteeHeading).first()).toBeVisible();
     });
 
     test("interests are visible", async ({ page }) => {
